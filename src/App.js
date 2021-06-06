@@ -1,6 +1,8 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import routes from './routes';
 
+import 'semantic-ui-css/semantic.min.css'
+
 function App() {
   return (
     <div className="App">

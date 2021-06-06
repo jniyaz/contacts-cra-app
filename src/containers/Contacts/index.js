@@ -1,10 +1,13 @@
 import React from 'react'
+import Header from '../../components/Header'
+import { Container } from 'semantic-ui-react'
 
 const ContactsContainer = () => {
     return (
-        <div>
+        <>
+            <Header />
             <h2>Contacts</h2>
-        </div>
+        </>
     )
 }
 
