@@ -1,11 +1,12 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import routes from './routes';
+import { GlobalProvider } from './contexts/Provider';
 
-import 'semantic-ui-css/semantic.min.css'
+import 'semantic-ui-css/semantic.min.css';
 
 function App() {
   return (
-    <div className="App">
+    <GlobalProvider>
       <Router>
         <Switch>
           {routes.map((route, index) => (
@@ -13,7 +14,7 @@ function App() {
           ))}
         </Switch>
       </Router>
-    </div>
+    </GlobalProvider>
   );
 }
 
