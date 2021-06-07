@@ -1,5 +1,6 @@
 import React from 'react'
-import { Button, Form, Message } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
+import { Button, Form, Message, Segment } from 'semantic-ui-react'
 
 const LoginUI = ({ form: { onChange, form, loginFormValid, onSubmit, loading, error } }) => {
     return (
@@ -29,7 +30,10 @@ const LoginUI = ({ form: { onChange, form, loginFormValid, onSubmit, loading, er
             </Form.Field>
 
             <Button onClick={onSubmit} fluid loading={loading} disabled={loginFormValid} type='submit'>Submit</Button>
+
+            <Segment>Need an account <Link to="/auth/register">Register</Link></Segment>
         </Form>
+        
     )
 }
 
