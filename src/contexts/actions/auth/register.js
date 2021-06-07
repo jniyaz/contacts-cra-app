@@ -12,6 +12,8 @@ export const register = ({
         })
         .catch((e) => {
             console.log(e.response.data);
-            dispatch({ type: REGISTER_ERROR, payload: e.response.data.errors });
+            dispatch({ type: REGISTER_ERROR, 
+                payload: e.response.data.errors ? e.response.data.errors : 'Server error'
+            });
         })
 }

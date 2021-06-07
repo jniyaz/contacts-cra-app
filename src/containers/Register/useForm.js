@@ -18,11 +18,11 @@ export default () => {
         }
     }, [error]);
 
-    useEffect(() => {
-        if (data) {
-            history.push('/auth/login');
-        }
-    }, [data])
+    // useEffect(() => {
+    //     if (data) {
+    //         history.push('/auth/login');
+    //     }
+    // }, [data])
 
     const onChange = (e, { name, value }) => {
         setForm({ ...form, [name]: value });

@@ -1,11 +1,17 @@
 import React from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useHistory, useLocation } from 'react-router-dom'
 import { Menu, Image, Button, Icon } from 'semantic-ui-react'
 import logo from '../../assets/images/logo.svg'
 
 const Header = () => {
-    // const { pathname } = useLocation();
-    // console.log(pathname);
+    const { pathname } = useLocation();
+    const history = useHistory();
+    const userLoggedIn = localStorage.getItem('token');
+    
+    const userLogout = () => {
+        localStorage.removeItem('token');
+        history.push('/');
+    }
 
     return (
         <Menu secondary pointing>
@@ -18,14 +24,17 @@ const Header = () => {
                         Add Contact
                     </Button>
                 </Menu.Item>
-                <Menu.Item as={Link} to="/auth/login" name='Login' />
-                <Menu.Item as={Link} to="/auth/register" name='Register' />
-                {/* <Menu.Item>
-                    <Button as={Link} to="/" basic color='red' icon>
+                { userLoggedIn ?
+                <Menu.Item>
+                    <Button onClick={userLogout} basic color='red' icon>
                         <Icon name="log out"></Icon>
                         Logout
                     </Button>
-                </Menu.Item> */}
+                </Menu.Item> : <>
+                    <Menu.Item as={Link} to="/auth/login" name='Login' />
+                    <Menu.Item as={Link} to="/auth/register" name='Register' />
+                </>
+                }
             </Menu.Menu>
         </Menu>
     )
