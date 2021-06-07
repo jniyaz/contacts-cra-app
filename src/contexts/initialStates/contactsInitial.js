@@ -1,7 +1,8 @@
 const contactsInit = {
     contacts: {
         loading: false,
-        error: null
+        error: null,
+        data: null
     },
     addContact: {
         loading: false,
