@@ -1,16 +1,22 @@
 import React, { useEffect } from 'react'
-import { register } from '../../contexts/actions/register'
+import RegisterUI from '../../layouts/Register';
+// import { register } from '../../contexts/actions/auth/register'
+import { Container } from 'semantic-ui-react';
+import Header from '../../components/Header';
+import useForm from './useForm';
 
 const RegisterContainer = () => {
 
     useEffect(()=>{
-        register()
+        // register()
     }, []);
 
     return (
-        <div>
+        <Container>
+            <Header />
             <h2>Register</h2>
-        </div>
+            <RegisterUI form={useForm()} />
+        </Container>
     )
 }
 

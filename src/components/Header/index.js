@@ -1,9 +1,12 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { Menu, Image, Button, Icon } from 'semantic-ui-react'
 import logo from '../../assets/images/logo.svg'
 
 const Header = () => {
+    // const { pathname } = useLocation();
+    // console.log(pathname);
+
     return (
         <Menu secondary pointing>
             <Image src={logo} width={68} />
@@ -15,14 +18,14 @@ const Header = () => {
                         Add Contact
                     </Button>
                 </Menu.Item>
-                <Menu.Item name='Login' />
-                <Menu.Item name='Register' />
-                <Menu.Item>
+                <Menu.Item as={Link} to="/auth/login" name='Login' />
+                <Menu.Item as={Link} to="/auth/register" name='Register' />
+                {/* <Menu.Item>
                     <Button as={Link} to="/" basic color='red' icon>
                         <Icon name="log out"></Icon>
                         Logout
                     </Button>
-                </Menu.Item>
+                </Menu.Item> */}
             </Menu.Menu>
         </Menu>
     )
