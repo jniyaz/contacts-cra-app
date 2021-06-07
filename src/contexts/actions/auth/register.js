@@ -1,12 +1,12 @@
 import { REGISTER_ERROR, REGISTER_LOADING, REGISTER_SUCCESS } from '../../../constants/actionTypes'
-import axiosInstance from '../../../helpers/axios'
+import axiosInstance from '../../../helpers/axiosInstance'
 
 // tests
 export const register = ({
     name, email, password, password_confirmation
 }) => (dispatch) => {
     dispatch({ type: REGISTER_LOADING });
-    axiosInstance.post('/register', { name, email, password, password_confirmation })
+    axiosInstance().post('/register', { name, email, password, password_confirmation })
         .then((res) => {
             dispatch({ type: REGISTER_SUCCESS, payload: res.data });
         })
