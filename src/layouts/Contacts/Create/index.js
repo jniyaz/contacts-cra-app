@@ -3,7 +3,7 @@ import { Button, Form, Grid, Input, Segment, Select, TextArea, Header as Semanti
 import countries from '../../../utils/countries';
 import "./index.css"
 
-const CreateContact = ({ onChange, form }) => {
+const CreateContact = ({ onChange, form, onSubmit, formInvalid }) => {
     return (
         <>
             <Grid centered>
@@ -25,7 +25,7 @@ const CreateContact = ({ onChange, form }) => {
                                     <Form.Input type="file" label='Avatar' placeholder='Avatar' />
                                 </Form.Field> */}
                                 <Form.Checkbox label='Favourite' name="firstName" name="isFavourite" onChange={(e, data) => onChange(e, { name: "isFavourite", value: data.checked })} />
-                                <Button primary type='submit'>Submit</Button>
+                                <Button onClick={onSubmit} disabled={formInvalid} primary type='submit'>Submit</Button>
                             </Form>
                         </Card.Content>
                     </Card>

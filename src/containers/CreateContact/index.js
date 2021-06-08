@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Container } from 'semantic-ui-react'
 import Header from '../../components/Header'
+import createContact from '../../contexts/actions/contacts/createContact'
 import CreateContact from '../../layouts/Contacts/Create'
 
 const CreateContactContainer = () => {
@@ -11,12 +12,16 @@ const CreateContactContainer = () => {
         setForm({ ...form, [name]: value});
     };
 
-    console.log(form);
+    const onSubmit = () => {
+        createContact(form);
+    }
+
+    const formInvalid = !form.firstName || !form.lastName || !form.countryCode || !form.phoneNumber;
 
     return (
         <Container>
             <Header />
-            <CreateContact onChange={onChange} form={form} />
+            <CreateContact onChange={onChange} form={form} onSubmit={onSubmit} formInvalid={formInvalid} />
         </Container>
     )
 }
