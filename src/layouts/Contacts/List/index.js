@@ -6,12 +6,13 @@ const ContactsListUI = ({
         contacts: { loading, error, data }
     }
 }) => {
+    console.log(data);
     return (
         <div>
-            {loading && (
+            {(loading || !data?.length) && (
                 <>
                     <Placeholder fluid>
-                        <Placeholder.Header image>
+                        <Placeholder.Header>
                             <Placeholder.Line />
                             <Placeholder.Line />
                         </Placeholder.Header>
@@ -23,7 +24,8 @@ const ContactsListUI = ({
                     </Placeholder>
                 </>
             )}
-            {!loading && (
+            
+            {!loading && data?.length && (
                 <Table celled>
                     <Table.Header>
                         <Table.Row>

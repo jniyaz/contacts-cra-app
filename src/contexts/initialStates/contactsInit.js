@@ -6,7 +6,8 @@ const contactsInit = {
     },
     addContact: {
         loading: false,
-        error: null
+        error: null,
+        data: null
     }
 };
 
