@@ -4,7 +4,7 @@ import axiosInstance from "../../../helpers/axiosInstance";
 
 export default (history) => (dispatch) => {
     dispatch({ type: CONTACTS_LOADING });
-    axiosInstance(history).get('/users')
+    axiosInstance(history).get('/contacts')
     .then((res) => {
         console.log(res.data);
         dispatch({ type: CONTACTS_SUCCESS, payload: res.data })
