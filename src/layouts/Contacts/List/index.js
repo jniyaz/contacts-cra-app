@@ -21,7 +21,7 @@ const ContactsListUI = ({
             <List divided verticalAlign='middle'>
             {data?.length && data.map((contact, index) => (
                 <List.Item key={index}>
-                    <Image src="https://www.gravatar.com/avatar/HASH?s=40" title="Avatar" />
+                    <Image circular src="https://www.gravatar.com/avatar/HASH?s=40" title="Avatar" />
                     <List.Content>
                         <List.Header as='a'>{contact.name}</List.Header>
                     </List.Content>

@@ -7,16 +7,16 @@ export const login = ({
     email, password
 }) => (dispatch) => {
     dispatch({ type: LOGIN_LOADING });
-    axiosInstance().post('/login', { email, password })
+    axiosInstance().post('/auth/login', { email, password })
         .then((res) => {
             localStorage.token = res.data.access_token;
             dispatch({ type: LOGIN_SUCCESS, payload: res.data });
         })
         .catch((e) => {
-            // console.log(e.response.data.error);
+            // console.log(e);
             dispatch({ 
                 type: LOGIN_ERROR, 
-                payload: e.response.data.error ? e.response.data.error : CONNECTION_ERROR
+                payload: e.response.data ? e.response.data.error : CONNECTION_ERROR
             });
         })
 }

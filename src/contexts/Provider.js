@@ -1,6 +1,6 @@
 import { createContext, useReducer } from 'react';
-import authInit from './initialStates/authInitial';
-import contactsInit from './initialStates/contactsInitial';
+import authInit from './initialStates/authInit';
+import contactsInit from './initialStates/contactsInit';
 import auth from './reducers/auth';
 import contacts from './reducers/contacts';
 

@@ -1,15 +1,18 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { Menu, Image, Button, Icon } from 'semantic-ui-react'
 import logo from '../../assets/images/logo.svg'
+import logout from '../../contexts/actions/auth/logout';
+import { GlobalContext } from '../../contexts/Provider';
 import isAuthenticated from '../../utils/isAuthenticated';
 
 const Header = () => {
     // const { pathname } = useLocation();
     const history = useHistory();
+    const { contactsDispatch: dispatch } = useContext(GlobalContext);
+
     const handleLogout = () => {
-        localStorage.removeItem('token');
-        history.push('/');
+        logout(history)(dispatch)
     }
 
     return (
