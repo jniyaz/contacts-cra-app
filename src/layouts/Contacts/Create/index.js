@@ -7,7 +7,7 @@ import "./index.css";
 const CreateContact = ({ onChange, form, onSubmit, formInvalid, formHalfFilled, loading }) => {
     return (
         <>
-            <Prompt when={formHalfFilled} message="You have unsaved changes, Are you sure? want to leave?" /> 
+            <Prompt when={formHalfFilled} message={JSON.stringify({ header: "Confirm", content: "You have unsaved changes, Are you sure, want to leave?" })} />
             <Grid centered>
                 <Grid.Column className="form-column">
                     <SemanticHeader>Create Contact</SemanticHeader>
