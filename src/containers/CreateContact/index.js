@@ -34,10 +34,18 @@ const CreateContactContainer = () => {
 
     const formInvalid = !form.firstName || !form.lastName || !form.countryCode || !form.phoneNumber;
 
+    const formHalfFilled = Object.values(form).filter((item) => item && item !== '').length > 0;
+
     return (
         <Container>
             <Header />
-            <CreateContact onChange={onChange} form={form} onSubmit={onSubmit} formInvalid={formInvalid} loading={loading} />
+            <CreateContact 
+                onChange={onChange} 
+                form={form} 
+                onSubmit={onSubmit} 
+                formInvalid={formInvalid} 
+                formHalfFilled={formHalfFilled}
+                loading={loading} />
         </Container>
     )
 }
