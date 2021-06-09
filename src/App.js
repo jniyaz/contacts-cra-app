@@ -9,7 +9,7 @@ import 'semantic-ui-css/semantic.min.css';
 
 const RenderRoute = (route) => {
   const history = useHistory();
-  document.title = route.title || "My Contacts";
+  document.title = route.title || "Contacts";
   if (route.needsAuth && !isAuthenticated()) {
     history.push('/auth/login')
   }

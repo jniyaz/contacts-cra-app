@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { Menu, Image, Button, Icon } from 'semantic-ui-react'
-import logo from '../../assets/images/logo.svg'
+import logo from '../../assets/images/users.svg'
 import logout from '../../contexts/actions/auth/logout';
 import { GlobalContext } from '../../contexts/Provider';
 import isAuthenticated from '../../utils/isAuthenticated';
@@ -18,7 +18,7 @@ const Header = () => {
     return (
         <Menu secondary pointing>
             <Image src={logo} width={68} />
-            <Menu.Item as={Link} to="/" style={{fontSize: 24}} name='My Contacts' />
+            <Menu.Item as={Link} to="/" style={{fontSize: 24, fontFamily: "Oswald",}} name='Contacts' />
             <Menu.Menu position='right'>
                 {isAuthenticated() ? <>
                 <Menu.Item>
