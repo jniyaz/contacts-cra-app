@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Icon, Image, List, Menu, Placeholder, Table } from 'semantic-ui-react'
+import { Button, Icon, Image, List, Menu, Message, Placeholder, Table } from 'semantic-ui-react'
 
 const ContactsListUI = ({
     state: {
@@ -9,7 +9,7 @@ const ContactsListUI = ({
     console.log(data);
     return (
         <div>
-            {(loading || !data?.length) && (
+            {( loading ) && (
                 <>
                     <Placeholder fluid>
                         <Placeholder.Header>
@@ -24,8 +24,12 @@ const ContactsListUI = ({
                     </Placeholder>
                 </>
             )}
-            
-            {!loading && data?.length && (
+
+            { !loading && data?.length === 0 && <Message
+                content='No Contacts Yet'
+            />}
+
+            { data?.length > 0 && (
                 <Table celled>
                     <Table.Header>
                         <Table.Row>
@@ -40,8 +44,8 @@ const ContactsListUI = ({
                         {data?.length && data.map((contact, index) => (
                             <Table.Row key={index}>
                                 <Table.Cell>
-                                    {contact.avatar 
-                                        ? <Image width="48" src={contact.avatar} title="Avatar" /> 
+                                    {contact.avatar
+                                        ? <Image width="48" src={contact.avatar} title="Avatar" />
                                         : <Image circular src="https://www.gravatar.com/avatar/HASH?s=40" title="Avatar" />
                                     }
                                 </Table.Cell>
@@ -55,6 +59,7 @@ const ContactsListUI = ({
                             </Table.Row>
                         ))}
                     </Table.Body>
+                    { data?.length > 5 &&
                     <Table.Footer>
                         <Table.Row>
                             <Table.HeaderCell colSpan='5'>
@@ -73,6 +78,7 @@ const ContactsListUI = ({
                             </Table.HeaderCell>
                         </Table.Row>
                     </Table.Footer>
+                    }
                 </Table>
             )}
         </div>

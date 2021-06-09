@@ -10,10 +10,15 @@ import ContactsListUI from '../../layouts/Contacts/List';
 const ContactsContainer = () => {
     const { contactsDispatch, contactsState } = useContext(GlobalContext);
     const history = useLocation();
-    console.log(contactsState);
-    
+    const { contacts: { data } } = contactsState;
+
     useEffect(() => {
-        getContacts(history)(contactsDispatch);
+        if ( data && data.length === 0 ) {
+            getContacts(history)(contactsDispatch);
+        }
+        if( !data ) {
+            getContacts(history)(contactsDispatch);
+        }
     }, [])
 
     return (

@@ -21,11 +21,13 @@ const CreateContact = ({ onChange, form, onSubmit, formInvalid, formHalfFilled, 
                     <Card fluid>
                         <Card.Content>
                             <Form unstackable>
-                                {tempFile && <div className="avatar-image">
-                                    <Image src={tempFile} />
+                                <div className="image-wrapper"> 
+                                    {tempFile && <div className="avatar-image">
+                                        <Image src={tempFile} />
+                                    </div>}
+                                    {!tempFile && <div onClick={chooseImage} className="avatar-image">Choose Picture</div>}
                                     <Icon name="pencil" onClick={chooseImage} />
-                                </div>}
-                                {!tempFile && <div onClick={chooseImage} className="avatar-image">Choose Picture</div>}
+                                </div>
                                 <input onChange={onImageChange} ref={imagePickRef} type="file" hidden />
                                 <Form.Group widths={2}>
                                     <Form.Input label='First name' placeholder='First name' name="firstName" onChange={onChange} />
