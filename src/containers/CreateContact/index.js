@@ -9,6 +9,8 @@ import CreateContact from '../../layouts/Contacts/Create';
 
 const CreateContactContainer = () => {
     const [form, setForm] = useState({});
+    const [tempFile, setTempFile] = useState(null);
+
     const history = useHistory();
     const {
         contactsDispatch,
@@ -28,6 +30,15 @@ const CreateContactContainer = () => {
         setForm({ ...form, [name]: value });
     };
 
+    const onImageChange = (e) => {
+        e.persist();
+        const fileURL = e.target.files[0];
+        setForm({ ...form, avatar: fileURL });
+        if (fileURL) {
+            setTempFile(URL.createObjectURL(fileURL));
+        }
+    }
+
     const onSubmit = () => {
         createContact(form)(contactsDispatch);
     }
@@ -39,13 +50,16 @@ const CreateContactContainer = () => {
     return (
         <Container>
             <Header />
-            <CreateContact 
-                onChange={onChange} 
-                form={form} 
-                onSubmit={onSubmit} 
-                formInvalid={formInvalid} 
+            <CreateContact
+                onChange={onChange}
+                form={form}
+                onSubmit={onSubmit}
+                formInvalid={formInvalid}
                 formHalfFilled={formHalfFilled}
-                loading={loading} />
+                onImageChange={onImageChange}
+                loading={loading}
+                tempFile={tempFile}
+            />
         </Container>
     )
 }
