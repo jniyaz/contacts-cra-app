@@ -39,7 +39,12 @@ const ContactsListUI = ({
                     <Table.Body>
                         {data?.length && data.map((contact, index) => (
                             <Table.Row key={index}>
-                                <Table.Cell><Image circular src="https://www.gravatar.com/avatar/HASH?s=40" title="Avatar" /></Table.Cell>
+                                <Table.Cell>
+                                    {contact.avatar 
+                                        ? <Image width="48" src={contact.avatar} title="Avatar" /> 
+                                        : <Image circular src="https://www.gravatar.com/avatar/HASH?s=40" title="Avatar" />
+                                    }
+                                </Table.Cell>
                                 <Table.Cell>{contact.first_name} {contact.last_name}</Table.Cell>
                                 <Table.Cell>{contact.phone_number}</Table.Cell>
                                 <Table.Cell>{contact.country_code}</Table.Cell>

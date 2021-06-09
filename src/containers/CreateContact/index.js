@@ -43,6 +43,8 @@ const CreateContactContainer = () => {
         createContact(form)(contactsDispatch);
     }
 
+    console.log(form);
+
     const formInvalid = !form.firstName || !form.lastName || !form.countryCode || !form.phoneNumber;
 
     const formHalfFilled = Object.values(form).filter((item) => item && item !== '').length > 0 && !data;
