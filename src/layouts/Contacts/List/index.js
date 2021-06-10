@@ -1,15 +1,15 @@
-import React from 'react'
-import { Button, Icon, Image, List, Menu, Message, Placeholder, Table } from 'semantic-ui-react'
+import React from 'react';
+import ImageThumb from '../../../components/ImageThumb';
+import { Button, Icon, Menu, Message, Placeholder, Table } from 'semantic-ui-react';
 
 const ContactsListUI = ({
     state: {
         contacts: { loading, error, data }
     }
 }) => {
-    console.log(data);
     return (
         <div>
-            {( loading ) && (
+            {(loading) && (
                 <>
                     <Placeholder fluid>
                         <Placeholder.Header>
@@ -44,10 +44,11 @@ const ContactsListUI = ({
                         {data?.length && data.map((contact, index) => (
                             <Table.Row key={index}>
                                 <Table.Cell>
-                                    {contact.avatar
-                                        ? <Image width="48" src={contact.avatar} title="Avatar" />
-                                        : <Image circular src="https://www.gravatar.com/avatar/HASH?s=40" title="Avatar" />
-                                    }
+                                    <ImageThumb
+                                        firstName={contact.first_name}
+                                        lastName={contact.last_name}
+                                        src={contact.avatar}
+                                    />
                                 </Table.Cell>
                                 <Table.Cell>{contact.first_name} {contact.last_name}</Table.Cell>
                                 <Table.Cell>{contact.phone_number}</Table.Cell>
@@ -60,24 +61,24 @@ const ContactsListUI = ({
                         ))}
                     </Table.Body>
                     { data?.length > 5 &&
-                    <Table.Footer>
-                        <Table.Row>
-                            <Table.HeaderCell colSpan='5'>
-                                <Menu floated='right' pagination>
-                                    <Menu.Item as='a' icon>
-                                        <Icon name='chevron left' />
-                                    </Menu.Item>
-                                    <Menu.Item as='a'>1</Menu.Item>
-                                    <Menu.Item as='a'>2</Menu.Item>
-                                    <Menu.Item as='a'>3</Menu.Item>
-                                    <Menu.Item as='a'>4</Menu.Item>
-                                    <Menu.Item as='a' icon>
-                                        <Icon name='chevron right' />
-                                    </Menu.Item>
-                                </Menu>
-                            </Table.HeaderCell>
-                        </Table.Row>
-                    </Table.Footer>
+                        <Table.Footer>
+                            <Table.Row>
+                                <Table.HeaderCell colSpan='5'>
+                                    <Menu floated='right' pagination>
+                                        <Menu.Item as='a' icon>
+                                            <Icon name='chevron left' />
+                                        </Menu.Item>
+                                        <Menu.Item as='a'>1</Menu.Item>
+                                        <Menu.Item as='a'>2</Menu.Item>
+                                        <Menu.Item as='a'>3</Menu.Item>
+                                        <Menu.Item as='a'>4</Menu.Item>
+                                        <Menu.Item as='a' icon>
+                                            <Icon name='chevron right' />
+                                        </Menu.Item>
+                                    </Menu>
+                                </Table.HeaderCell>
+                            </Table.Row>
+                        </Table.Footer>
                     }
                 </Table>
             )}
