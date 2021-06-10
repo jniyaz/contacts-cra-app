@@ -1,7 +1,7 @@
 .slide-container {
     display: flex;
     align-items: center;
-    max-width: 57rem;
+    max-width: 70rem;
     overflow-y: auto;  
     margin: auto;
   }
@@ -22,6 +22,7 @@
     justify-content: center;
     margin: 0px 4px 15px;
   }
+
   .items-container::-webkit-scrollbar {
     display: none;
   }

@@ -5,14 +5,13 @@ import "./style.css";
 
 const Favorites = ({ favorites, loading }) => {
     const listRef = useRef(null);
-    console.log(favorites);
     const showIcons = favorites && favorites.length > 2;
 
     const scrollLeft = () => {
         if (listRef.current) {
             listRef.current.scrollBy({
                 top: 0,
-                left: 500,
+                left: -500,
                 behavior: "smooth",
             });
         }
@@ -22,7 +21,7 @@ const Favorites = ({ favorites, loading }) => {
         if (listRef.current) {
             listRef.current.scrollBy({
                 top: 0,
-                left: -500,
+                left: 500,
                 behavior: "smooth",
             });
         }
