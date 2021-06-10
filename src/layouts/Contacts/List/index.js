@@ -1,14 +1,19 @@
 import React from 'react';
 import ImageThumb from '../../../components/ImageThumb';
-import { Button, Icon, Menu, Message, Placeholder, Table } from 'semantic-ui-react';
+import { Button, Header, Icon, Menu, Message, Placeholder, Table } from 'semantic-ui-react';
+import Favourites from '../Favourites';
 
-const ContactsListUI = ({
-    state: {
-        contacts: { loading, error, data }
+const ContactsListUI = ({ state: { contacts: { loading, error, data } } }) => {
+    const favourites = () => {
+        return data && data.filter((item) => item.is_favourite);
     }
-}) => {
     return (
         <div>
+            {/* Favourites */}
+            <Header>Favourites</Header>
+            <Favourites favorites={favourites()} loading={loading} />
+            {/* All */}
+            <Header>All Contacts</Header>
             {(loading) && (
                 <>
                     <Placeholder fluid>

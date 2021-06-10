@@ -24,7 +24,7 @@ const ContactsContainer = () => {
     return (
         <Container>
             <Header />
-            <h2>All Contacts</h2>
+            <h2>Contacts</h2>
             <ContactsListUI state={contactsState} />
         </Container>
     )
