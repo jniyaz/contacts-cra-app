@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import { BrowserRouter as Router, Switch, Route, useHistory } from 'react-router-dom';
 import routes from './routes';
 import { GlobalProvider } from './contexts/Provider';
@@ -27,11 +27,13 @@ function App() {
       <Router getUserConfirmation={(message, callback) => {
         return UserLeaveConfirmation(message, callback, confirmOpen, setConfirmOpen);
       }}>
-        <Switch>
-          {routes.map((route, index) => (
-            <RenderRoute key={index} {...route} />
-          ))}
-        </Switch>
+        <Suspense fallback={<p>Loading...</p>}>
+          <Switch>
+            {routes.map((route, index) => (
+              <RenderRoute key={index} {...route} />
+            ))}
+          </Switch>
+        </Suspense>
       </Router>
     </GlobalProvider>
   );

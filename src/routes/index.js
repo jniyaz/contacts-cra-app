@@ -1,7 +1,14 @@
-import LoginComponent from '../containers/Login';
-import RegisterComponent from '../containers/Register';
-import ContactsComponent from '../containers/Contacts';
-import CreateContactComponent from '../containers/CreateContact';
+import { lazy } from 'react';
+
+// import LoginComponent from '../containers/Login';
+// import RegisterComponent from '../containers/Register';
+// import ContactsComponent from '../containers/Contacts';
+// import CreateContactComponent from '../containers/CreateContact';
+
+const LoginComponent = lazy(() => import('../containers/Login'));
+const RegisterComponent = lazy(() => import('../containers/Register'));
+const ContactsComponent = lazy(() => import('../containers/Contacts'));
+const CreateContactComponent = lazy(() => import('../containers/CreateContact'));
 
 const routes = [
     {
