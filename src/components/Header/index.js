@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { Link, useHistory } from 'react-router-dom'
-import { Menu, Image, Button, Icon, Input } from 'semantic-ui-react'
+import { Menu, Image, Button, Icon, Input, Search } from 'semantic-ui-react'
 import logo from '../../assets/images/users.svg'
 import logout from '../../contexts/actions/auth/logout';
 import searchContacts from '../../contexts/actions/contacts/searchContacts';
@@ -29,6 +29,7 @@ const Header = () => {
                 {isAuthenticated() ? <>
                     <Menu.Item>
                         <Input className='icon' onChange={onSearchChange} icon='search' placeholder='Search...' />
+                        {/* <Search placeholder='Search countries...'  onChange={onSearchChange} /> */}
                     </Menu.Item>
                 <Menu.Item>
                     <Button as={Link} to="/contacts/create" primary icon>

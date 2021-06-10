@@ -6,6 +6,7 @@ import {
     CONTACTS_ERROR, 
     CONTACTS_LOADING, 
     CONTACTS_SUCCESS, 
+    DELETE_CONTACT_LOADING, 
     DELETE_CONTACT_SUCCESS, 
     LOGOUT_USER, 
     SEARCH_CONTATCS
@@ -110,6 +111,20 @@ const contacts = (state, { payload, type }) => {
                     })
                 }
             }
+            case DELETE_CONTACT_LOADING:
+                return {
+                    ...state,
+                    contacts: {
+                        ...state.contacts,
+                        loading: false,
+                        data: state.contacts.data.map(item => {
+                            if (item.id === payload) {
+                                return { ...item, deleteing: true }
+                            }
+                            return item;
+                        })
+                    }
+                }
             case DELETE_CONTACT_SUCCESS:
                 return {
                     ...state,

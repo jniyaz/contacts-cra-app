@@ -4,7 +4,7 @@ import axiosInstance from "../../../helpers/axiosInstance";
 
 export default (id) => (dispatch) => {
     console.log(`deleting`, id);
-    dispatch({ type: DELETE_CONTACT_LOADING });
+    dispatch({ type: DELETE_CONTACT_LOADING, payload: id });
     axiosInstance()
         .delete(`/contacts/${id}`,)
         .then((res) => {

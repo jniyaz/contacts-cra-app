@@ -31,6 +31,7 @@ const ContactsContainer = () => {
             <Header />
             <h2>Contacts</h2>
             <ContactsListUI state={contactsState} deleteContact={handleDelete} />
+            {/* <Segment>Pellentesque habitant morbi tristique senectus.</Segment> */}
         </Container>
     )
 }

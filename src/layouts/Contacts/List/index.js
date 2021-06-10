@@ -50,7 +50,7 @@ const ContactsListUI = ({ state: { contacts: { loading, data, isSearchActive, se
                     </Table.Header>
                     <Table.Body>
                         {currentContacts?.length && currentContacts.map((contact, index) => (
-                            <Table.Row key={index}>
+                            <Table.Row key={index} disabled={contact.deleting}>
                                 <Table.Cell>
                                     <ImageThumb
                                         firstName={contact.first_name}
