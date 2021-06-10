@@ -3,7 +3,7 @@ import ImageThumb from '../../../components/ImageThumb';
 import { Button, Header, Icon, Menu, Message, Placeholder, Table } from 'semantic-ui-react';
 import Favourites from '../Favourites';
 
-const ContactsListUI = ({ state: { contacts: { loading, data, isSearchActive, searchedContacts } }, deleteContact }) => {
+const ContactsListUI = ({ state: { contacts: { loading, data, isSearchActive, searchedContacts } }, deleteContact, favouriteContact }) => {
     const favourites = () => {
         return currentContacts && currentContacts.filter((item) => item.is_favourite);
     }
@@ -58,10 +58,17 @@ const ContactsListUI = ({ state: { contacts: { loading, data, isSearchActive, se
                                         src={contact.avatar}
                                     />
                                 </Table.Cell>
-                                <Table.Cell>{contact.first_name} {contact.last_name}</Table.Cell>
-                                <Table.Cell>{contact.phone_number}</Table.Cell>
+                                <Table.Cell>
+                                    {contact.first_name} {contact.last_name}
+                                    {contact.is_favourite && <Icon name="heart" size="small" color="red" style={{ paddingLeft: '3px' }} />}    
+                                </Table.Cell>
+                                <Table.Cell>{contact.country_code}-{contact.phone_number}</Table.Cell>
                                 <Table.Cell>{contact.country_code}</Table.Cell>
                                 <Table.Cell textAlign='center'>
+                                    {contact.is_favourite 
+                                        ? <Button size='mini' basic color='red' onClick={() => favouriteContact(contact.id, contact.is_favourite)}><Icon name="star" /></Button> 
+                                        : <Button size='mini' basic onClick={() => favouriteContact(contact.id, contact.is_favourite)}><Icon name="star" /></Button>
+                                    }
                                     <Button size='mini' basic color='blue'>
                                         <Icon name="edit" />
                                     </Button>

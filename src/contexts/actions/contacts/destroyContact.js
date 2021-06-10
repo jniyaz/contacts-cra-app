@@ -6,7 +6,7 @@ export default (id) => (dispatch) => {
     console.log(`deleting`, id);
     dispatch({ type: DELETE_CONTACT_LOADING, payload: id });
     axiosInstance()
-        .delete(`/contacts/${id}`,)
+        .delete(`/contacts/${id}`)
         .then((res) => {
             console.log(res.data);
             dispatch({ type: DELETE_CONTACT_SUCCESS, payload: id });

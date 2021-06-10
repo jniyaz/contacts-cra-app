@@ -2,6 +2,9 @@ import {
     ADD_CONTACT_ERROR, 
     ADD_CONTACT_LOADING, 
     ADD_CONTACT_SUCCESS, 
+    ADD_REMOVE_FAVOURITE_ERROR, 
+    ADD_REMOVE_FAVOURITE_LOADING, 
+    ADD_REMOVE_FAVOURITE_SUCCESS, 
     CLEAR_ADD_CONTACT, 
     CONTACTS_ERROR, 
     CONTACTS_LOADING, 
@@ -132,6 +135,37 @@ const contacts = (state, { payload, type }) => {
                         ...state.contacts,
                         loading: false,
                         data: state.contacts.data.filter(item => item.id !== payload)
+                    }
+                }
+            case ADD_REMOVE_FAVOURITE_LOADING:
+                return {
+                    ...state,
+                    contacts: {
+                        ...state.contacts,
+                        loading: false
+                    }
+                }
+            case ADD_REMOVE_FAVOURITE_SUCCESS:
+                return {
+                    ...state,
+                    contacts: {
+                        ...state.contacts,
+                        loading: false,
+                        data: state.contacts.data.map(item => {
+                            if(item.id === payload.id) {
+                                return payload;
+                            }
+                            return item;
+                        })
+                    }
+                }
+            case ADD_REMOVE_FAVOURITE_ERROR:
+                return {
+                    ...state,
+                    contacts: {
+                        ...state.contacts,
+                        loading: false,
+                        data: payload
                     }
                 }
 

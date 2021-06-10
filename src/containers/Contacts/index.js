@@ -2,10 +2,11 @@ import React, { useContext, useEffect } from 'react'
 import { useLocation } from 'react-router';
 import { Container } from 'semantic-ui-react';
 
+import favouriteContact from '../../contexts/actions/contacts/favouriteContact';
 import destroyContact from '../../contexts/actions/contacts/destroyContact';
 import getContacts from '../../contexts/actions/contacts/getContacts';
-import { GlobalContext } from '../../contexts/Provider'
 import ContactsListUI from '../../layouts/Contacts/List';
+import { GlobalContext } from '../../contexts/Provider'
 import Header from '../../components/Header'
 
 const ContactsContainer = () => {
@@ -15,6 +16,10 @@ const ContactsContainer = () => {
 
     const handleDelete = (id) => {
         destroyContact(id)(contactsDispatch);
+    }
+
+    const handleFavourite = (id, is_favourite) => {
+        favouriteContact(id, !is_favourite)(contactsDispatch);
     }
 
     useEffect(() => {
@@ -30,7 +35,7 @@ const ContactsContainer = () => {
         <Container>
             <Header />
             <h2>Contacts</h2>
-            <ContactsListUI state={contactsState} deleteContact={handleDelete} />
+            <ContactsListUI state={contactsState} deleteContact={handleDelete} favouriteContact={handleFavourite} />
             {/* <Segment>Pellentesque habitant morbi tristique senectus.</Segment> */}
         </Container>
     )
