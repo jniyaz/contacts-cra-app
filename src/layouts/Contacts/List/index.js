@@ -3,7 +3,7 @@ import ImageThumb from '../../../components/ImageThumb';
 import { Button, Header, Icon, Menu, Message, Placeholder, Table } from 'semantic-ui-react';
 import Favourites from '../Favourites';
 
-const ContactsListUI = ({ state: { contacts: { loading, data, isSearchActive, searchedContacts } } }) => {
+const ContactsListUI = ({ state: { contacts: { loading, data, isSearchActive, searchedContacts } }, deleteContact }) => {
     const favourites = () => {
         return currentContacts && currentContacts.filter((item) => item.is_favourite);
     }
@@ -62,13 +62,17 @@ const ContactsListUI = ({ state: { contacts: { loading, data, isSearchActive, se
                                 <Table.Cell>{contact.phone_number}</Table.Cell>
                                 <Table.Cell>{contact.country_code}</Table.Cell>
                                 <Table.Cell textAlign='center'>
-                                    <Button size='mini' basic color='blue'>Edit</Button>
-                                    <Button size='mini' basic color='red'>Delete</Button>
+                                    <Button size='mini' basic color='blue'>
+                                        <Icon name="edit" />
+                                    </Button>
+                                    <Button size='mini' basic color='red' onClick={() => deleteContact(contact.id)}>
+                                        <Icon name="trash" />
+                                    </Button>
                                 </Table.Cell>
                             </Table.Row>
                         ))}
                     </Table.Body>
-                    { currentContacts?.length > 5 &&
+                    {/* { currentContacts?.length > 5 &&
                         <Table.Footer>
                             <Table.Row>
                                 <Table.HeaderCell colSpan='5'>
@@ -87,7 +91,7 @@ const ContactsListUI = ({ state: { contacts: { loading, data, isSearchActive, se
                                 </Table.HeaderCell>
                             </Table.Row>
                         </Table.Footer>
-                    }
+                    } */}
                 </Table>
             )}
         </div>

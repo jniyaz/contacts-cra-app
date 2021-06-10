@@ -6,6 +6,7 @@ import {
     CONTACTS_ERROR, 
     CONTACTS_LOADING, 
     CONTACTS_SUCCESS, 
+    DELETE_CONTACT_SUCCESS, 
     LOGOUT_USER, 
     SEARCH_CONTATCS
 } from "../../constants/actionTypes";
@@ -44,7 +45,6 @@ const contacts = (state, { payload, type }) => {
                 ...state,
                 contactsInit
             }
-        
         case ADD_CONTACT_LOADING:
             return {
                 ...state,
@@ -54,7 +54,6 @@ const contacts = (state, { payload, type }) => {
                     loading: true,
                 }
             }
-        
         case ADD_CONTACT_SUCCESS:
             return {
                 ...state,
@@ -111,6 +110,15 @@ const contacts = (state, { payload, type }) => {
                     })
                 }
             }
+            case DELETE_CONTACT_SUCCESS:
+                return {
+                    ...state,
+                    contacts: {
+                        ...state.contacts,
+                        loading: false,
+                        data: state.contacts.data.filter(item => item.id !== payload)
+                    }
+                }
 
         default:
             return state;
