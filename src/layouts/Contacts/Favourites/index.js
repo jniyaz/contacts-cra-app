@@ -29,8 +29,9 @@ const Favorites = ({ favorites, loading }) => {
     return (
         <>
             {!loading && favorites && favorites.length === 0 && (
-                <Message content="No Contacts to show" />
+                <Message content="No Favourites found" />
             )}
+            
             <div className="slide-container">
                 {showIcons && (
                     <Icon

@@ -2,7 +2,9 @@ const contactsInit = {
     contacts: {
         loading: false,
         error: null,
-        data: null
+        data: null,
+        isSearchActive: false,
+        searchedContacts: null
     },
     addContact: {
         loading: false,

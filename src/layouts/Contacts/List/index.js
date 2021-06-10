@@ -3,10 +3,13 @@ import ImageThumb from '../../../components/ImageThumb';
 import { Button, Header, Icon, Menu, Message, Placeholder, Table } from 'semantic-ui-react';
 import Favourites from '../Favourites';
 
-const ContactsListUI = ({ state: { contacts: { loading, error, data } } }) => {
+const ContactsListUI = ({ state: { contacts: { loading, data, isSearchActive, searchedContacts } } }) => {
     const favourites = () => {
-        return data && data.filter((item) => item.is_favourite);
+        return currentContacts && currentContacts.filter((item) => item.is_favourite);
     }
+
+    const currentContacts = isSearchActive ? searchedContacts : data;
+
     return (
         <div>
             {/* Favourites */}
@@ -30,11 +33,11 @@ const ContactsListUI = ({ state: { contacts: { loading, error, data } } }) => {
                 </>
             )}
 
-            { !loading && data?.length === 0 && <Message
-                content='No Contacts Yet'
+            { !loading && currentContacts?.length === 0 && <Message
+                content="No Contacts found."
             />}
 
-            { data?.length > 0 && (
+            { currentContacts?.length > 0 && (
                 <Table celled>
                     <Table.Header>
                         <Table.Row>
@@ -46,7 +49,7 @@ const ContactsListUI = ({ state: { contacts: { loading, error, data } } }) => {
                         </Table.Row>
                     </Table.Header>
                     <Table.Body>
-                        {data?.length && data.map((contact, index) => (
+                        {currentContacts?.length && currentContacts.map((contact, index) => (
                             <Table.Row key={index}>
                                 <Table.Cell>
                                     <ImageThumb
@@ -65,7 +68,7 @@ const ContactsListUI = ({ state: { contacts: { loading, error, data } } }) => {
                             </Table.Row>
                         ))}
                     </Table.Body>
-                    { data?.length > 5 &&
+                    { currentContacts?.length > 5 &&
                         <Table.Footer>
                             <Table.Row>
                                 <Table.HeaderCell colSpan='5'>
