@@ -7,7 +7,7 @@ export const register = ({
     name, email, password, password_confirmation
 }) => (dispatch) => {
     dispatch({ type: REGISTER_LOADING });
-    axiosInstance().post('/auth/register', { name, email, password, password_confirmation })
+    axiosInstance().post('/register', { name, email, password, password_confirmation })
         .then((res) => {
             dispatch({ type: REGISTER_SUCCESS, payload: res.data });
         })

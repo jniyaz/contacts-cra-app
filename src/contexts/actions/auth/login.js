@@ -7,7 +7,7 @@ export const login = ({
     email, password
 }) => (dispatch) => {
     dispatch({ type: LOGIN_LOADING });
-    axiosInstance().post('/auth/login', { email, password })
+    axiosInstance().post('/login', { email, password })
         .then((res) => {
             localStorage.token = res.data.access_token;
             dispatch({ type: LOGIN_SUCCESS, payload: res.data });
